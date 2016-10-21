@@ -26,48 +26,36 @@ char* saveResult(double number,char ch)
     out = ecvt(staticResult, 6, &decpnt, &sign);
     return out;
 }
-void funkcion(char text[],char ch){
-    double number=0;
-
-    number=atof(text);
-    if(number==0){
-        ;
-    }
-    else{
-        number=atof(text);
-        saveResult(number,ch);
-
-    }
-}
+char* funkcion(char ch);
+char* funkcion1(char ch);
 int main()
-{
+{   char *textoutput1;
+    char text='1';
 
-    char text[2]="1";
-    double number;
-    char ch;
-    ch=text[0];
+    textoutput1=funkcion1(text);
+    printf("Text output funkcion1=%s\n",textoutput1);// 1
+    funkcion(text);
 
-    funkcion(text,ch);
+    text='+';
+    textoutput1=funkcion1(text);
+    printf("Text output funkcion1=%s\n",textoutput1);// +
 
-    text[0]='+';
-    ch=text[0];
-
-    funkcion(text,ch);
-
-    text[0]='2';
-
-    funkcion(text,ch);
-
-    text[0]='=';
-    ch=text[0];
-    number=atof(text);
-
-    char *result;
-    result=saveResult(number,ch);
-    printf("String result=%s",result);
+    char *textoutput=funkcion(text);
+    printf("Text output funkcion=%s\n",textoutput);//  1+
     return 0;
 }
-
+char *funkcion(char ch){
+    static int i=0;
+    static char string[10];
+    string[i]=ch;
+    i++;
+    return string;
+}
+char* funkcion1(char ch){
+    static char string[1];
+    string[0]=ch;
+    return string;
+}
 
 
 
