@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
-double saveResult(double number,char ch)
-{   static double staticResult;
+char* saveResult(double number,char ch)
+{   static double staticResult=0;
     switch(ch){
     case '+':
         staticResult =staticResult+number;
@@ -14,65 +14,57 @@ double saveResult(double number,char ch)
         staticResult =staticResult*number;
         break;
     case '/':
-        if (number==0){
-            printf("Div by zero");
-            exit(0);
-        }
-        else {
-            staticResult =staticResult/number;
-            break;
-        }
-    case ' ':
-        staticResult =number+staticResult;
+        staticResult =staticResult/number;
+        break;
     case '=':
         printf("STATIC RESULT=%lf\n", staticResult);
+    default:
+        staticResult =number+staticResult;
     }
-    //printf("STATIC RESULT=%.16lf\n", staticResult);
-    return staticResult;
+    int decpnt, sign;
+    char *out;
+    out = ecvt(staticResult, 6, &decpnt, &sign);
+    return out;
+}
+void funkcion(char text[],char ch){
+    double number=0;
+
+    number=atof(text);
+    if(number==0){
+        ;
+    }
+    else{
+        number=atof(text);
+        saveResult(number,ch);
+
+    }
 }
 int main()
 {
-    //вхідна строка
-    char text[10]="123";
 
-    int size;
-    size=strlen(text);
+    char text[2]="1";
     double number;
-    double outputNumber;
+    char ch;
+    ch=text[0];
 
-    //читаємо перше число 123 до знака +-/*корінь=..
-    number=atoi(text);// sscanf(text,"%lf",&number);
+    funkcion(text,ch);
 
-    //записуємо зчитане число в staticResult виводимо його длянаглядності
-    outputNumber=saveResult(number,' ');
-    // очищення 123 з строки при клыку на +-/*... (в сигналах +-*/.. мають стояти 2 метода 1-очищеннястроки(при натисканні на кнопку) другий- відображення знаку (при відтисканні)  )
-    memset(text,' ',size);
-    printf("\nAfter clean string=%s",text);
-    //вводимо для прикладу після числа 123/
-    text[0]='/';
-    printf("\nAfter new operato string=%s\n",text);
+    text[0]='+';
+    ch=text[0];
 
-    //тут реалізувати заміну оператора(+ - * /) без збільшення продвигання по строці, або взяття числа що в памяті під корінь/ очищення памяті/
+    funkcion(text,ch);
 
-    //...
-    // запамятовуэмо знак очищаємо строку
-    char ch=text[0];
-    printf("After operations +-/* in memory=%c",ch);
-    size=strlen(text);
-    memset(text,' ',size);
-    printf("\nAfter clean string=%s\n",text);
-    // переходимо до 2-го операнда
-    char string2[15]="-9";
+    text[0]='2';
 
-    sscanf(string2, "%s", text);
+    funkcion(text,ch);
 
-    printf("\nAfter input -9 string=%s\n",text);
-    //читаємо друге число
-    number=atoi(text);
-    //записуємо зчитане число в staticResult виводимо результат
-    outputNumber=saveResult(number,ch);
-    printf("RESULT 123/(-9)=%.16lf\n", outputNumber);
+    text[0]='=';
+    ch=text[0];
+    number=atof(text);
 
+    char *result;
+    result=saveResult(number,ch);
+    printf("String result=%s",result);
     return 0;
 }
 
