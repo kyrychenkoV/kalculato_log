@@ -71,7 +71,7 @@ static char tmpchar='0';
 char *stringnumber;
 int main()
 
-{   test1();
+{  // test1();
     char *textoutput1;
     stringnumber = (char*) calloc(2,sizeof(char));
     char *text;
