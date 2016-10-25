@@ -1,15 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
+#include <ctype.h>
+char* funkcion1(char ch);
 
-char* saveResult(double number,char ch)
-{   static double staticResult=0;
+int checkSymbol(char ch);
+
+char * proverka(char text[],char *stringnumber);
+void test1(){
+    char *result;
+    char *text;
+    char *string;
+    string = (char*) calloc(2,sizeof(char));
+    text[0]='1';
+    result=proverka(text,string);
+
+    text[0]='+';
+    result=proverka(text,string);
+
+    text[0]='2';
+    result=proverka(text,string);
+    text[0]='=';
+    result=proverka(text,string);
+    char p[]="3";
+    if (strcmp(result,p)==0){
+        printf ("ok");
+    }
+    else {
+        printf("fail");
+    }
+}
+char *funkcion(char ch[],char *string);
+
+char*saveResult(double number,char ch)
+{  static int i=0;
+    static double staticResult=0;
     switch(ch){
     case '+':
-        staticResult =staticResult+number;
+        staticResult+=number;
+
         break;
     case '-':
-        staticResult =staticResult-number;
+        staticResult=staticResult-number;
         break;
     case '*':
         staticResult =staticResult*number;
@@ -17,34 +49,89 @@ char* saveResult(double number,char ch)
     case '/':
         staticResult =staticResult/number;
         break;
+    case '0':
+        staticResult =staticResult;
+        break;
     case '=':
-        printf("\nSTATIC RESULT=%lf\n", staticResult);
+        printf("\nSTATIC RESULT=%f\n", staticResult);
+        break;
     default:
-        staticResult =staticResult+number;
+        staticResult=staticResult+number;
+        break;
     }
+    printf("\n%d stat rezult=%f\n",i,staticResult);
     int decpnt, sign;
     char *out;
     out = ecvt(staticResult, 6, &decpnt, &sign);
+    i++;
     return out;
 }
-char* funkcion1(char ch);
-int checkSymbol(char ch);
-char * proverka(char text,char *textoutput1);
+static double tmpDouble=0;
+static char tmpchar='0';
+char *stringnumber;
 int main()
-{   char *textoutput1;
 
-    char text='1';
-    textoutput1=proverka(text,textoutput1);
+{  // test1();
+    char *textoutput1;
 
-    text='+';
-    textoutput1=proverka(text,textoutput1);
+    stringnumber = (char*) calloc(2,sizeof(char));
 
-    text='2';
-    textoutput1=proverka(text,textoutput1);
+    char *text;
+    text = (char*) calloc(1,sizeof(char));
 
-    text='=';
-    textoutput1=proverka(text,textoutput1);
+    text[0]='1';
+    textoutput1=proverka(text,stringnumber);
+
+    text[0]='+';
+    textoutput1=proverka(text,stringnumber);
+
+    text[0]='2';
+    textoutput1=proverka(text,stringnumber);
+    text[0]='=';
+    textoutput1=proverka(text,stringnumber);
+
     return 0;
+}
+char * proverka(char text[],char *stringnumber){
+    double number=0;
+    char ch;
+    ch=text[0];
+    char flag=0;
+    char *textoutput1;
+
+    if ((isdigit(ch)!=0)){
+        textoutput1=funkcion(text,stringnumber);
+        number=atof(textoutput1);
+        tmpDouble=number;
+        if(tmpchar=='0'){
+            textoutput1=saveResult(number,ch);
+        }
+        else{
+            ch=tmpchar;
+            textoutput1=saveResult(number,ch);
+        }
+    }
+    if (checkSymbol(ch)==0){
+        free(stringnumber);
+        stringnumber = (char*) calloc(2,sizeof(char));
+        tmpchar=ch;
+
+    }
+    if (checkSymbol(ch)==1){
+        textoutput1=funkcion1(ch);
+        ch=textoutput1[0];
+        free(stringnumber);
+        stringnumber = (char*) calloc(2,sizeof(char));
+        number=tmpDouble;
+        textoutput1=saveResult(number,ch);
+    }
+    return textoutput1;
+}
+
+char *funkcion(char ch[],char *string){
+    string = (char*) realloc(string,1*sizeof(char));
+    strcat(string,ch);
+    return string;
 }
 char* funkcion1(char ch){
     static char string[1];
@@ -64,36 +151,7 @@ int checkSymbol(char ch){
     if (ch=='='){
         return 1;
     }
-    else{
-        return 2;
-    }
-}
-char * proverka(char text,char *textoutput1){
-    double number=0;
-    char ch;
-    if ((checkSymbol(text)==2)){
-        textoutput1=funkcion1(text);
-        number=atof(textoutput1);
-        textoutput1=saveResult(number,text);
-
-        printf("\nCifra number=%f,textoutput1=%s 2=%d",number,textoutput1,checkSymbol(text));
-    }
-    if (checkSymbol(text)==0){
-        textoutput1=funkcion1(text);
-        ch=textoutput1[0];
-        textoutput1=saveResult(number,text);
-
-        printf("\ntextoutput1=%s Znak 0=%d,",textoutput1,checkSymbol(text));
-
-    }
-    if (text=='='){
-        textoutput1=funkcion1(text);
-        ch=textoutput1[0];
-        textoutput1=saveResult(number,text);
-
-        printf("\nRovno 1= %d",checkSymbol(text));
-    }
-    return textoutput1;
+    else return 2;
 }
 
 
