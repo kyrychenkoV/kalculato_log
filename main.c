@@ -5,40 +5,68 @@
 char* funkcion1(char ch);
 
 int checkSymbol(char ch);
+char * check(char *string,char text[],char checkResult[]);
 
 char * proverka(char text[],char *stringnumber);
-void test1(){
-    char *result;
-    char *text;
+char *funkcion(char ch[],char *string);
+char *saveResult(double number,char ch);
+char *tmpDoubleToString(double tmpDouble);
+static double tmpDouble=0;
+static char tmpchar='0';
+char *stringnumber;
+int main()
+
+{   char *inputButton;
+    inputButton = (char*) calloc(2,sizeof(char));
     char *string;
     string = (char*) calloc(2,sizeof(char));
-    text[0]='1';
-    result=proverka(text,string);
 
-    text[0]='+';
-    result=proverka(text,string);
 
-    text[0]='2';
-    result=proverka(text,string);
-    text[0]='=';
-    result=proverka(text,string);
-    char p[]="3";
-    if (strcmp(result,p)==0){
-        printf ("ok");
-    }
-    else {
-        printf("fail");
-    }
+    //    Test 1 all ok
+    //    inputButton[0]='1';
+    //    check(string,inputButton,"1");
+    //    inputButton[0]='+';
+    //    check(string,inputButton,"1");
+    //    inputButton[0]='=';
+    //    check(string,inputButton,"1");
+
+    //    Test 2 all ok
+    //    inputButton[0]='1';
+    //    check(string,inputButton,"1");
+    //    inputButton[0]='+';
+    //    check(string,inputButton,"1");
+    //    inputButton[0]='2';
+    //    check(string,inputButton,"2");
+    //    inputButton[0]='=';
+    //    check(string,inputButton,"3");
+
+    //    Test 3 all ok
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='+';
+    check(string,inputButton,"1");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='+';
+    check(string,inputButton,"3");
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='=';
+    check(string,inputButton,"4");
+    return 0;
 }
-char *funkcion(char ch[],char *string);
-
-char*saveResult(double number,char ch)
+char *tmpDoubleToString(double tmpDouble){
+    char *string;
+    string= (char*) calloc(2,sizeof(char));
+    sprintf(string,"%.0f",tmpDouble);
+    return string;
+}
+char* saveResult(double number,char ch)
 {  static int i=0;
     static double staticResult=0;
     switch(ch){
     case '+':
         staticResult+=number;
-
         break;
     case '-':
         staticResult=staticResult-number;
@@ -59,46 +87,38 @@ char*saveResult(double number,char ch)
         staticResult=staticResult+number;
         break;
     }
-    printf("\n%d stat rezult=%f\n",i,staticResult);
-    int decpnt, sign;
+    // int decpnt, sign;
     char *out;
-    out = ecvt(staticResult, 6, &decpnt, &sign);
+    out = (char*) calloc(32,sizeof(char));
+    //int leng=0;
+    //out = ecvt(staticResult, 6, &decpnt, &sign);
+    sprintf(out,"%.0f",staticResult);
     i++;
     return out;
 }
-static double tmpDouble=0;
-static char tmpchar='0';
-char *stringnumber;
-int main()
 
-{   test1();
-    char *textoutput1;
-    stringnumber = (char*) calloc(2,sizeof(char));
-    char *text;
-    text = (char*) calloc(1,sizeof(char));
+char * check(char *string,char text[],char checkResult[]){
+    static char *result;
+    result=proverka(text,string);
+    printf("input %s checkResult %s output=%s ",text,checkResult,result);
+    if (strcmp(result,checkResult)==0){
+        printf ("ok\n");
+    }
+    else {
+        printf("fail\n");
+    }
 
-    text[0]='1';
-    textoutput1=proverka(text,stringnumber);
-
-    text[0]='+';
-    textoutput1=proverka(text,stringnumber);
-
-    text[0]='2';
-    textoutput1=proverka(text,stringnumber);
-    text[0]='=';
-    textoutput1=proverka(text,stringnumber);
-
-    return 0;
+    return result;
 }
 char * proverka(char text[],char *stringnumber){
     double number=0;
-    char ch;
+    char ch=0;
     ch=text[0];
-    char flag=0;
     char *textoutput1;
+    textoutput1= (char*) calloc(20,sizeof(char));
 
     if ((isdigit(ch)!=0)){
-        textoutput1=funkcion(text,stringnumber);
+        textoutput1=text;// funkcion(text,stringnumber);
         number=atof(textoutput1);
         tmpDouble=number;
         if(tmpchar=='0'){
@@ -106,26 +126,28 @@ char * proverka(char text[],char *stringnumber){
         }
         else{
             ch=tmpchar;
-            textoutput1=saveResult(number,ch);
+            saveResult(number,ch);
+            textoutput1=tmpDoubleToString(tmpDouble);
+            ch='0';
         }
     }
     if (checkSymbol(ch)==0){
-        free(stringnumber);
-        stringnumber = (char*) calloc(2,sizeof(char));
+        if(tmpchar=='0'){
+            textoutput1=tmpDoubleToString(tmpDouble);
+        }
+        else{
+            textoutput1=saveResult(number,ch);
+        }
         tmpchar=ch;
-
     }
     if (checkSymbol(ch)==1){
         textoutput1=funkcion1(ch);
         ch=textoutput1[0];
-        free(stringnumber);
-        stringnumber = (char*) calloc(2,sizeof(char));
         number=tmpDouble;
         textoutput1=saveResult(number,ch);
     }
     return textoutput1;
 }
-
 char *funkcion(char ch[],char *string){
     string = (char*) realloc(string,1*sizeof(char));
     strcat(string,ch);
