@@ -23,224 +23,212 @@ int main()
     char *string;
     string = (char*) calloc(2,sizeof(char));
 
-
-
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='+';
-//    check(string,inputButton,"1");
-//    inputButton[0]='=';
-//    check(string,inputButton,"1");
-
-
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='+';
-//    check(string,inputButton,"1");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='=';
-//    check(string,inputButton,"3");
-
-
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='+';
-//    check(string,inputButton,"1");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='+';
-//    check(string,inputButton,"3");
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='-';
-//    check(string,inputButton,"4");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='=';
-//    check(string,inputButton,"2");
-
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='*';
-//    check(string,inputButton,"3");
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='-';
-//    check(string,inputButton,"9");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='+';
-//    check(string,inputButton,"7");
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='*';
-//    check(string,inputButton,"8");
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='-';
-//    check(string,inputButton,"8");
-//    inputButton[0]='6';
-//    check(string,inputButton,"6");
-//    inputButton[0]='*';
-//    check(string,inputButton,"2");
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='=';
-//    check(string,inputButton,"6");
-
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='*';
-//    check(string,inputButton,"2");
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='*';
-//    check(string,inputButton,"2");
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='-';
-//    check(string,inputButton,"6");
-//    inputButton[0]='4';
-//    check(string,inputButton,"4");
-//    inputButton[0]='+';
-//    check(string,inputButton,"2");
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='*';
-//    check(string,inputButton,"3");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='=';
-//    check(string,inputButton,"6");
-
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='*';
-//    check(string,inputButton,"1");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='*';
-//    check(string,inputButton,"2");
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='-';
-//    check(string,inputButton,"6");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='=';
-//    check(string,inputButton,"4");
-
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='*';
-//    check(string,inputButton,"1");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='*';
-//    check(string,inputButton,"2");
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='-';
-//    check(string,inputButton,"6");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='-';
-//    check(string,inputButton,"4");
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='*';
-//    check(string,inputButton,"3");
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='-';
-//    check(string,inputButton,"9");
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='/';
-//    check(string,inputButton,"8");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='/';
-//    check(string,inputButton,"4");
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='/';
-//    check(string,inputButton,"4");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='*';
-//    check(string,inputButton,"2");
-//    inputButton[0]='4';
-//    check(string,inputButton,"4");
-//    inputButton[0]='/';
-//    check(string,inputButton,"8");
-//    inputButton[0]='2';
-//    check(string,inputButton,"2");
-//    inputButton[0]='=';
-//    check(string,inputButton,"4");
-
-//    inputButton[0]='5';
-//    check(string,inputButton,"5");
-//    inputButton[0]='/';
-//    check(string,inputButton,"5");
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='=';
-//    check(string,inputButton,"1.6666666666666667");
-
-
-//    inputButton[0]='-';
-//    check(string,inputButton,"0");
-//    inputButton[0]='1';
-//    check(string,inputButton,"-1");
-//    inputButton[0]='+';
-//    check(string,inputButton,"-1");
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='=';
-//    check(string,inputButton,"2");
-
-//    inputButton[0]='-';
-//    check(string,inputButton,"0");
-//    inputButton[0]='2';
-//    check(string,inputButton,"-2");
-//    inputButton[0]='+';
-//    check(string,inputButton,"-2");
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='=';
-//    check(string,inputButton,"1");
-
-//    inputButton[0]='-';
-//    check(string,inputButton,"0");
-//    inputButton[0]='2';
-//    check(string,inputButton,"-2");
-//    inputButton[0]='*';
-//    check(string,inputButton,"-2");
-//    inputButton[0]='3';
-//    check(string,inputButton,"3");
-//    inputButton[0]='=';
-//    check(string,inputButton,"-6");
-
-//    inputButton[0]='7';
-//    check(string,inputButton,"7");
-//    inputButton[0]='*';
-//    check(string,inputButton,"7");
-//    inputButton[0]='5';
-//    check(string,inputButton,"5");
-//    inputButton[0]='=';
-//    check(string,inputButton,"35");
-
-
-  inputButton[0]='6';
-      check(string,inputButton,"6");
-    inputButton[0]='/';
-    check(string,inputButton,"6");
-    inputButton[0]='0';
-    check(string,inputButton,"0");//fail
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='+';
+    check(string,inputButton,"1");
     inputButton[0]='=';
-    check(string,inputButton,"Divide By Zero");//fail
+    check(string,inputButton,"1");
+
+
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='+';
+    check(string,inputButton,"1");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='=';
+    check(string,inputButton,"3");
+
+
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='+';
+    check(string,inputButton,"1");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='+';
+    check(string,inputButton,"3");
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='-';
+    check(string,inputButton,"4");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='=';
+    check(string,inputButton,"2");
+
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='*';
+    check(string,inputButton,"3");
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='-';
+    check(string,inputButton,"9");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='+';
+    check(string,inputButton,"7");
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='*';
+    check(string,inputButton,"8");
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='-';
+    check(string,inputButton,"8");
+    inputButton[0]='6';
+    check(string,inputButton,"6");
+    inputButton[0]='*';
+    check(string,inputButton,"2");
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='=';
+    check(string,inputButton,"6");
+
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='*';
+    check(string,inputButton,"2");
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='*';
+    check(string,inputButton,"2");
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='-';
+    check(string,inputButton,"6");
+    inputButton[0]='4';
+    check(string,inputButton,"4");
+    inputButton[0]='+';
+    check(string,inputButton,"2");
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='*';
+    check(string,inputButton,"3");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='=';
+    check(string,inputButton,"6");
+
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='*';
+    check(string,inputButton,"1");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='*';
+    check(string,inputButton,"2");
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='-';
+    check(string,inputButton,"6");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='=';
+    check(string,inputButton,"4");
+
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='*';
+    check(string,inputButton,"1");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='*';
+    check(string,inputButton,"2");
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='-';
+    check(string,inputButton,"6");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='-';
+    check(string,inputButton,"4");
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='*';
+    check(string,inputButton,"3");
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='-';
+    check(string,inputButton,"9");
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='/';
+    check(string,inputButton,"8");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='/';
+    check(string,inputButton,"4");
+    inputButton[0]='1';
+    check(string,inputButton,"1");
+    inputButton[0]='/';
+    check(string,inputButton,"4");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='*';
+    check(string,inputButton,"2");
+    inputButton[0]='4';
+    check(string,inputButton,"4");
+    inputButton[0]='/';
+    check(string,inputButton,"8");
+    inputButton[0]='2';
+    check(string,inputButton,"2");
+    inputButton[0]='=';
+    check(string,inputButton,"4");
+
+    inputButton[0]='5';
+    check(string,inputButton,"5");
+    inputButton[0]='/';
+    check(string,inputButton,"5");
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='=';
+    check(string,inputButton,"1.6666666666666667");
+
+
+    inputButton[0]='-';
+    check(string,inputButton,"0");
+    inputButton[0]='1';
+    check(string,inputButton,"-1");
+    inputButton[0]='+';
+    check(string,inputButton,"-1");
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='=';
+    check(string,inputButton,"2");
+
+    inputButton[0]='-';
+    check(string,inputButton,"0");
+    inputButton[0]='2';
+    check(string,inputButton,"-2");
+    inputButton[0]='+';
+    check(string,inputButton,"-2");
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='=';
+    check(string,inputButton,"1");
+
+    inputButton[0]='-';
+    check(string,inputButton,"0");
+    inputButton[0]='2';
+    check(string,inputButton,"-2");
+    inputButton[0]='*';
+    check(string,inputButton,"-2");
+    inputButton[0]='3';
+    check(string,inputButton,"3");
+    inputButton[0]='=';
+    check(string,inputButton,"-6");
+
+    inputButton[0]='7';
+    check(string,inputButton,"7");
+    inputButton[0]='*';
+    check(string,inputButton,"7");
+    inputButton[0]='5';
+    check(string,inputButton,"5");
+    inputButton[0]='=';
+    check(string,inputButton,"35");
 
     double a;
     a=1.6666666666666667;
@@ -252,6 +240,15 @@ int main()
     printf("\n%0.16f=",c);//1.6666666666666672 ok
     sprintf(test,"%0.16f",c);
     printf("%s ok",test);//1.6666666666666672 ok
+
+    inputButton[0]='6';
+    check(string,inputButton,"6");
+    inputButton[0]='/';
+    check(string,inputButton,"6");
+    inputButton[0]='0';
+    check(string,inputButton,"0");//fail
+    inputButton[0]='=';
+    check(string,inputButton,"Divide By Zero");//fail
     return 0;
 }
 char *tmpDoubleToString(double tmpDouble){
