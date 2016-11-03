@@ -2,423 +2,451 @@
 #include <stdlib.h>
 #include<string.h>
 #include <ctype.h>
+#include <math.h>
 char* funkcion1(char ch);
 
 int checkSymbol(char ch);
-char * check(char *string,char text[],char checkResult[]);
+char * check(char text[],char checkResult[]);
 
-char * proverka(char text[],char *stringnumber);
-char *funkcion(char ch[],char *string);
+char * proverka(char text[]);
+char *funkcion(char *ch);
 char *saveResult(double number,char ch);
 char *tmpDoubleToString(double tmpDouble);
+int  findingDecimalPlaces(double number);
 static double tmpDouble=0;
-static double tmpDouble2=0;
+static double tmpSecond=0;
 static char tmpchar='0';
 static double staticResult=0;
+static double MS=0;
 char *stringnumber;
-static char string1[20];
-char* funkcion2(char *ch);
-static char *result;
+static char tmparray[33];
+int decimalPlases=0;
 int main()
 
-{   char *inputButton;
-    inputButton = (char*) calloc(2,sizeof(char));
-    char *string;
-    string = (char*) calloc(2,sizeof(char));
+{
+//    check("1","1");
+//    check("+","1");
+//    check("=","1");
 
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='+';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"1");
+//    check("1","1");
+//    check("+","1");
+//    check("1","1");
+//    check("+","2");
+//    check("1","1");
+//    check("=","3");
 
+//    check("1","1");
+//    check("+","1");
+//    check("2","2");
+//    check("=","3");
 
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='+';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"3");
+//    check("1","1");
+//    check("+","1");
+//    check("2","2");
+//    check("+","3");
+//    check("1","1");
+//    check("-","4");
+//    check("3","3");
+//    check("=","1");
 
+//    check("3","3");
+//    check("*","3");
+//    check("3","3");
+//    check("-","9");
+//    check("2","2");
+//    check("+","7");
+//    check("3","3");
+//    check("*","10");
+//    check("5","5");
+//    check("=","50");
 
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='+';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='+';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"4");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"2");
+//    check("1","1");
+//    check("+","1");
+//    check("2","2");
+//    check("+","3");
+//    check("3","3");
+//    check("+","6");
+//    check("4","4");
+//    check("+","10");
+//    check("5","5");
+//    check("=","15");
 
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"9");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='+';
-    //    check(string,inputButton,"7");
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"8");
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"8");
-    //    inputButton[0]='6';
-    //    check(string,inputButton,"6");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"6");
+//    check("1","1");
+//    check("+","1");
+//    check("2","2");
+//    check("+","3");
+//    check("3","3");
+//    check("+","6");
+//    check("4","4");
+//    check("+","10");
+//    check("5","5");
+//    check("=","15");
 
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"6");
-    //    inputButton[0]='4';
-    //    check(string,inputButton,"4");
-    //    inputButton[0]='+';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"6");
+//    check("1","1");
+//    check("-","1");
+//    check("2","2");
+//    check("-","-1");
+//    check("3","3");
+//    check("-","-4");
+//    check("4","4");
+//    check("-","-8");
+//    check("5","5");
+//    check("=","-13");
 
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"6");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"4");
-
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"6");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"4");
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"9");
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='/';
-    //    check(string,inputButton,"8");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='/';
-    //    check(string,inputButton,"4");
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"1");
-    //    inputButton[0]='/';
-    //    check(string,inputButton,"4");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='4';
-    //    check(string,inputButton,"4");
-    //    inputButton[0]='/';
-    //    check(string,inputButton,"8");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"2");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"4");
-
-    //    inputButton[0]='5';
-    //    check(string,inputButton,"5");
-    //    inputButton[0]='/';
-    //    check(string,inputButton,"5");
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"1.6666666666666667");
+//    check("1","1");
+//    check("*","1");
+//    check("2","2");
+//    check("*","2");
+//    check("3","3");
+//    check("*","6");
+//    check("4","4");
+//    check("*","24");
+//    check("5","5");
+//    check("=","120");
 
 
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"0");
-    //    inputButton[0]='1';
-    //    check(string,inputButton,"-1");
-    //    inputButton[0]='+';
-    //    check(string,inputButton,"-1");
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"2");
 
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"0");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"-2");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"-2");
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"-6");
+//    check("-","0");
+//    check("2","-2");
+//    check("+","-2");
+//    check("7","7");
+//    check("=","5");
 
-    //    inputButton[0]='-';
-    //    check(string,inputButton,"0");
-    //    inputButton[0]='2';
-    //    check(string,inputButton,"-2");
-    //    inputButton[0]='*';
-    //    check(string,inputButton,"-2");
-    //    inputButton[0]='3';
-    //    check(string,inputButton,"3");
-    //    inputButton[0]='=';
-    //    check(string,inputButton,"-6");
+//    check("-","0");
+//    check("2","-2");
+//    check("*","-2");
+//    check("7","7");
+//    check("=","-14");
 
 
-    //    double a;
-    //    a=1.6666666666666667;
-    //    double b;
-    //    b=0.0000000000000005;
-    //    double c;
-    //    c=a+b;
-    //    char test[20];
-    //    printf("\n%0.16f=",c);//1.6666666666666672 ok
-    //    sprintf(test,"%0.16f",c);
-    //    printf("%s ok\n",test);//1.6666666666666672 ok
-
-    //    ////        inputButton[0]='6';
-    //    ////        check(string,inputButton,"6");
-    //    ////        inputButton[0]='/';
-    //    ////        check(string,inputButton,"6");
-    //    ////        inputButton[0]='0';
-    //    ////        check(string,inputButton,"0");//fail
-    //    ////        inputButton[0]='=';
-    //    ////        check(string,inputButton,"Divide By Zero");//fail
-
-    inputButton[0]='3';
-    check(string,inputButton,"3");
-    inputButton[0]='3';
-    check(string,inputButton,"33");
-    inputButton[0]='1';
-    check(string,inputButton,"331");
-    inputButton[0]='5';
-    check(string,inputButton,"3315");
-    inputButton[0]='+';
-    check(string,inputButton,"3315");
-    inputButton[0]='2';
-    check(string,inputButton,"2");
-    inputButton[0]='=';
-    check(string,inputButton,"3317");
-
-    inputButton[0]='3';
-    check(string,inputButton,"3");
-    inputButton[0]='3';
-    check(string,inputButton,"33");
-    inputButton[0]='1';
-    check(string,inputButton,"331");
-    inputButton[0]='5';
-    check(string,inputButton,"3315");
-    inputButton[0]='*';
-    check(string,inputButton,"3315");
-    inputButton[0]='2';
-    check(string,inputButton,"2");
-    inputButton[0]='=';
-    check(string,inputButton,"6630");
+//    check("-","0");
+//    check("2","-2");
+//    check("-","-2");
+//    check("4","4");
+//    check("=","-6");
 
 
-    inputButton[0]='3';
-    check(string,inputButton,"3");
-    inputButton[0]='3';
-    check(string,inputButton,"33");
-    inputButton[0]='+';
-    check(string,inputButton,"33");
-    inputButton[0]='2';
-    check(string,inputButton,"2");
-    inputButton[0]='2';
-    check(string,inputButton,"22");
-    inputButton[0]='=';
-    check(string,inputButton,"55");
-
-    inputButton[0]='3';
-    check(string,inputButton,"3");
-    inputButton[0]='3';
-    check(string,inputButton,"33");
-    inputButton[0]='-';
-    check(string,inputButton,"33");
-    inputButton[0]='2';
-    check(string,inputButton,"2");
-    inputButton[0]='2';
-    check(string,inputButton,"22");
-    inputButton[0]='=';
-    check(string,inputButton,"11");
-
-    inputButton[0]='3';
-    check(string,inputButton,"3");
-    inputButton[0]='3';
-    check(string,inputButton,"33");
-    inputButton[0]='*';
-    check(string,inputButton,"33");
-    inputButton[0]='2';
-    check(string,inputButton,"2");
-    inputButton[0]='=';
-    check(string,inputButton,"66");
-
-    inputButton[0]='3';
-    check(string,inputButton,"3");
-    inputButton[0]='3';
-    check(string,inputButton,"33");
-    inputButton[0]='/';
-    check(string,inputButton,"33");
-    inputButton[0]='2';
-    check(string,inputButton,"2");
-    inputButton[0]='=';
-    check(string,inputButton,"16.5");
-
-    inputButton[0]='3';
-    check(string,inputButton,"3");
-    inputButton[0]='2';
-    check(string,inputButton,"32");
-    inputButton[0]='/';
-    check(string,inputButton,"32");
-    inputButton[0]='2';
-    check(string,inputButton,"2");
-    inputButton[0]='+';
-    check(string,inputButton,"16");
-    inputButton[0]='1';
-    check(string,inputButton,"1");
-    inputButton[0]='2';
-    check(string,inputButton,"12");
-    inputButton[0]='=';
-    check(string,inputButton,"28");
-
-    inputButton[0]='8';
-    check(string,inputButton,"8");
-    inputButton[0]='0';
-    check(string,inputButton,"80");
-    inputButton[0]='/';
-    check(string,inputButton,"80");
-    inputButton[0]='2';
-    check(string,inputButton,"2");
-    inputButton[0]='0';
-    check(string,inputButton,"20");
-    inputButton[0]='=';
-    check(string,inputButton,"4");
-
-//    inputButton[0]='7';
-//    check(string,inputButton,"7");
-//    inputButton[0]='8';
-//    check(string,inputButton,"78");
-//    inputButton[0]='0';
-//    check(string,inputButton,"780");
-//    inputButton[0]='/';
-//    check(string,inputButton,"780");
-//    inputButton[0]='1';
-//    check(string,inputButton,"1");
-//    inputButton[0]='0';
-//    check(string,inputButton,"10");
-//    inputButton[0]='=';
-//    check(string,inputButton,"78");
 
 
+//    check("2","2");
+//    check("*","2");
+//    check("9","9");
+//    check("/","18");
+//    check("4","4");
+//    check("=","4.5");
+
+//    check("1","1");
+//    check("/","1");
+//    check("4","4");
+//    check("=","0.25");
+
+//    check("2","2");
+//    check("2","22");
+//    check("+","22");
+//    check("4","4");
+//    check("=","26");
+
+//    check("2","2");
+//    check("2","22");
+//    check("*","22");
+//    check("4","4");
+//    check("=","88");
+
+
+//    check("9","9");
+//    check("Q","3");
+//    check("+","3");
+//    check("2","2");
+//    check("=","5");
+
+//    check("9","9");
+//    check("+","9");
+//    check("9","9");
+//    check("+","18");
+//    check("7","7");
+//    check("Q","5");
+//    check("=","5");
+
+//    check("9","9");
+//    check("*","9");
+//    check("2","2");
+//    check("P","0.18");
+//    check("+","0.18");
+//    check("4","4");
+//    check("=","4.18");//fail
+
+//    check("9","9");
+//    check("P","0");
+//    check("+","0");
+//    check("6","6");
+//    check("=","6");
+//    check("2","2");
+//    check("+","2");
+//    check("2","2");
+//    check("+","4");
+//    check("S","4");
+//    check("=","8");//ms+=h.z.
+//    printf("\n");
+//    check("1","1");
+//    check("+","1");
+//    check("3","3");
+//    check("+","4");
+//    check("S","4");
+//    check("+","4");
+//    check("5","5");
+//    check("+","9");
+//    check("R","4");
+//    check("=","13");
+//    check("4","4");
+//    check("/","4");
+//    check("3","3");
+//    check("/","1.3333333333333333");
+//    check("3","3");
+//    check("/","0.4444444444444444");
+//    check("8","8");
+//    check("/","0.0555555555555556");
+//    check("8","8");
+//    check("/","0.0069444444444444");
+//    check("3","3");
+//    check("=","0.0023148148148148");
+
+//    check("-","0");
+//    check("2","-2");
+//    check("*","-2");
+//    check("9","9");
+//    check("/","-18");
+//    check("4","4");
+//    check("=","-4.5");
+
+//    check("1","1");
+//    check("/","1");
+//    check("4","4");
+//    check("=","0.25");
+//    findingDecimalPlaces(4.5);
+//    findingDecimalPlaces(-4.5);
+
+
+
+//        check("2","2");
+//        check(".","2.");
+//        check("3","2.3");
+//        check("+","2.3");
+//        check("4","4");
+//        check("=","6.3");
+
+//         check("2","2");
+//        check("+","2");
+//        check("1","1");
+//        check("=","3");
+//        check("+","3");
+//        check("4","4");
+//        check("=","7");
+
+    check("2","2");
+    check("2","22");
+    check("+","22");
+    check("4","4");
+    check("4","44");
+    check("=","66");
+
+
+    //    double i;
+    //    i=2.2345555555555554;
+    //    int a;
+    //    char string[40];
+    //    a=16;
+    //    sprintf(string,"%.*lf",a,i);
+    //    printf("%.*lf\n",a,i);
+
+    //    printf("%s\n",string);
+    //printf("tochka %d\n",findingDecimalPlaces(i));
 
     return 0;
 }
-char* funkcion2(char *ch){
-    strcat(string1,ch);
-    return string1;
 
+int  findingDecimalPlaces(double number){
+    char *string;
+    int i=0;
+    int count=0;
+    int count1=0;
+    int count2=0;
+    string=(char*) calloc(33,sizeof(char));
+    sprintf(string,"%.16f",number);
+    int len=0;
+    len=strlen(string);
+    //printf("LEN=%d, string=%s",len,string);
+    for(i=0;i<len;i++){
+        count++;
+        if(string[i]=='.'){
+            break;
+        }
+    }
+    for(i=len;i>count;i--){
+
+        if (string[i]>='1'&&string[i]<='9'){
+            count1=len-count-count2+1;
+            break;
+        }
+        else{
+            count1=0;
+        }
+        //printf("i=%d",i);
+        count2++;
+    }
+    decimalPlases=count1;
+    //printf("tochka=%d, kolznakov=%d\n",count,count2);
+    free(string);
+    return decimalPlases;
 }
-char * check(char *string,char text[],char checkResult[]){
+char *funkcion(char *ch){
+       strcat(tmparray,ch);
+        return tmparray;
+}
+char * proverka(char text[]){
+    double number=0;
+    double number1=0;
     char ch=0;
     ch=text[0];
-    if((isdigit(ch)!=0)||(ch=='.')){
-        result=funkcion2(text);
-        result=proverka(result,string);
-        printf("input %s checkResult %s output=%s ",text,checkResult,result);
-        if (strcmp(result,checkResult)==0){
-            printf("ok\n");
-        }
-        else {
-            printf("fail\n");
-        }
-        return result;
-    }
-    else
-    {   string1[0]=0;
-        result=proverka(text,string);
-        printf("input %s checkResult %s output=%s ",text,checkResult,result);
-        if (strcmp(result,checkResult)==0){
-            printf ("ok\n");
-        }
-        else {
-            printf("fail\n");
+    char *tmp;
+    tmp=(char*) calloc(20,sizeof(char));
+    tmp=text;
+    text=(char*) calloc(20,sizeof(char));
+
+    static int flag;
+    char *textoutput1;
+    textoutput1= (char*) calloc(33,sizeof(char));
+
+    if(isdigit(ch)!=0||ch=='.'){
+        tmp=funkcion(tmp);
+                strcpy(text,tmp);
+            }
+        if ((isdigit(ch)!=0||ch=='.')){
+        textoutput1=text;
+        number=atof(textoutput1);
+                if(tmpDouble==0&&tmpchar=='-'){
+            number=-number;
+            tmpDouble=number;
+            flag=1;
         }
 
-        return result;
+        if(tmpchar=='0'||flag==1){
+            tmpDouble=staticResult=number;
+
+            textoutput1=tmpDoubleToString(staticResult);
+        }
+        else{
+            tmpSecond=number;
+            if(ch=='/'&&number==0){
+                printf("\a");
+                textoutput1="Divide By Zero";
+                return textoutput1;
+                exit(0);
+            }
+            else{
+                saveResult(tmpSecond,tmpchar);
+                textoutput1=tmpDoubleToString(tmpSecond);
+                ch='0';
+            }
+        }
     }
-    return result;
+    if (checkSymbol(ch)==0){
+        tmparray[0]=0;
+        if(tmpchar=='0'){
+            textoutput1=tmpDoubleToString(tmpDouble);
+            tmpchar=ch;
+        }
+        else{
+            tmpchar=ch;
+            if(flag==1){
+                textoutput1=saveResult(1,'*');
+                flag=0;
+            }
+            else{
+                textoutput1=saveResult(number,ch);
+            }
+        }
+    }
+    if (checkSymbol(ch)==2){
+        tmparray[0]=0;
+        if(tmpchar=='0'){
+            tmpchar=ch;
+            textoutput1=tmpDoubleToString(tmpDouble);
+        }
+        else{
+            tmpchar=ch;
+            if(flag==1){
+                textoutput1=saveResult(1,'*');
+                flag=0;
+            }
+            else {
+                textoutput1=tmpDoubleToString(staticResult);
+            }
+        }
+    }
+    if (checkSymbol(ch)==1){
+        tmparray[0]=0;
+        textoutput1=saveResult(tmpSecond,ch);
+        tmpDouble=staticResult;
+        decimalPlases=0;
+    }
+    if (ch=='S'){
+        if(tmpchar==0){
+            MS=tmpDouble;
+        }
+        else{
+            MS=staticResult;
+        }
+        textoutput1=saveResult(MS,ch);
+        tmpDouble=staticResult;
+    }
+    if (ch=='R'){
+                saveResult(MS,ch);
+        textoutput1=tmpDoubleToString(MS);
+    }
+    if (ch=='C'){
+        MS=0;
+
+    }
+    if (ch=='Q'){
+        if(tmpchar=='0'){
+            number1=tmpDouble;
+        }
+        else{
+            number1=staticResult;
+        }
+        textoutput1=saveResult(number1,ch);
+        tmpSecond=staticResult;
+    }
+    if (ch=='P'){
+        if(tmpchar=='0'){
+            textoutput1=tmpDoubleToString(0);
+            tmpDouble=staticResult=0;
+        }
+        else{
+            textoutput1=saveResult(number,ch);
+        }
+    }
+    if (ch=='C'){
+        printf("sss\n");
+            tmpDouble=0;
+            tmpchar='0';
+            staticResult=0;
+            decimalPlases=0;
+            tmpSecond=0;
+            text[0]=0;
+        }
+    if (ch=='.'){
+        textoutput1=tmparray;
+        }
+     printf("tmpDouble=%.0f tmpchar=%c, tmpSecond=%.0f, static rezult=%.0f MS=%.0f\n",tmpDouble,tmpchar,tmpSecond,staticResult,MS);
+    return textoutput1;
 }
-
 char *tmpDoubleToString(double tmpDouble){
     char *string;
-    string= (char*) calloc(30,sizeof(char));
-    if(doubleOrNotDouble(tmpDouble)==1)
-    {
-        sprintf(string,"%0.16f",tmpDouble);
-    }
-    else{
-        sprintf(string,"%.0f",tmpDouble);
-    }
+    string= (char*) calloc(33,sizeof(char));
+    int a=0;
+    a=findingDecimalPlaces(tmpDouble);
+    sprintf(string,"%.*f",a,tmpDouble);
     return string;
 }
 char* saveResult(double number,char ch)
@@ -426,171 +454,61 @@ char* saveResult(double number,char ch)
     switch(ch){
     case '+':
         staticResult+=number;
-        printf("Plus\n");
         break;
     case '-':
         staticResult=staticResult-number;
         break;
     case '*':
-        staticResult=staticResult*number;
+        staticResult =staticResult*number;
         break;
     case '/':
         staticResult =staticResult/number;
         break;
     case '0':
-        staticResult=atof(result);
-        //printf("s=s\n");
+        staticResult =staticResult;
+        printf("s=s\n");
+    case 'S':
+        MS=MS;
+               break;
+    case 'R':
+        staticResult+=MS;
+
+        break;
+    case 'Q':
+        staticResult=sqrt(staticResult);
+
+        break;
+    case 'P':
+        staticResult=staticResult/100;
+
         break;
     case '=':
-        printf("\nSTATIC RESULT=%.01f\n", staticResult);
         break;
     default:
-        staticResult=staticResult+number;
         break;
     }
-    printf("\nsrez=%f\n",staticResult);
+
 
     char *out;
-    out = (char*) calloc(32,sizeof(char));
-    int n;
-    n=2;
-    if(doubleOrNotDouble(staticResult)==1)
-    {
-        sprintf(out,"%0.16f",staticResult);
-    }
-    else{
-        sprintf(out,"%.0f",staticResult);
-    }
+    out = (char*) calloc(33,sizeof(char));
+    int a=0;
+    a=findingDecimalPlaces(staticResult);
+    //printf("a=%d\n",a);
+    sprintf(out,"%.*f",a,staticResult);
     i++;
     return out;
 }
-int doubleOrNotDouble(double number){
-    char *string;
-    int sign=0;
-    int decpnt;
-    int i;
-    string=(char*) calloc(28,sizeof(char));
-    sprintf(string,"%f",tmpDouble);
-    string = ecvt(number, 28, &decpnt, &sign);
-    int len=0;
-    len=strlen(string);
-    for(i=decpnt;i<28;i++){
-        if(*(string+(i+1))!='0'){
-            return 1;
-        }
-        else{
-            return 0;
-        }
+char * check(char text[],char checkResult[]){
+    static char *result;
+    result=proverka(text);
+    printf("input %s checkResult %s output=%s ",text,checkResult,result);
+    if (strcmp(result,checkResult)==0){
+        printf ("ok\n");
     }
-    return 2;
-}
-
-char * proverka(char text[],char *stringnumber){
-    double number=0;
-    char ch=0;
-    ch=text[0];
-    static int flag;
-    char *textoutput1;
-    textoutput1= (char*) calloc(50,sizeof(char));
-    if ((isdigit(ch)!=0)){
-        textoutput1=text;
-        number=atof(textoutput1);
-        if(strlen(text)>1){
-            if(tmpchar=='0'){
-                number=atof(result);
-                //printf("\nNUMBER>2=%f\n",number);
-                tmpDouble=number;
-                saveResult(number,'0');
-            }
-            else{
-                ch=tmpchar;
-                tmpDouble2=number=atof(result);
-                printf("\nNUMBER>2=%f\n",number);
-                if(ch=='/'&&number==0){
-                    printf("\a");
-                    textoutput1="Divide By Zero";
-                    return textoutput1;
-                    exit(0);//поки так вихід з програми
-                }
-                else{
-                    saveResult(number,ch);
-                    textoutput1=tmpDoubleToString(tmpDouble2);
-                    ch='0';
-                }
-            }
-        }
-        else{
-
-            if(tmpDouble==0&&tmpchar=='-'){
-                number=-number;
-                flag=1;
-            }
-            tmpDouble=number;
-            if(tmpchar=='0'){
-                textoutput1=saveResult(number,ch);
-            }
-            else{
-                ch=tmpchar;
-                tmpDouble2=number;
-                if(ch=='/'&&number==0){
-                    printf("\a");
-                    textoutput1="Divide By Zero";
-                    return textoutput1;
-                    exit(0);//поки так вихід з програми
-                }
-                else{
-                    saveResult(number,ch);
-                    textoutput1=tmpDoubleToString(tmpDouble);
-                    ch='0';
-                }
-            }
-        }
+    else {
+        printf("fail\n");
     }
-    if (checkSymbol(ch)==0){
-        if(tmpchar=='0'){
-            textoutput1=tmpDoubleToString(tmpDouble);
-        }
-        else{
-            if(flag==1){
-                textoutput1=saveResult(-1,'*');
-                flag=0;
-            }
-            else{
-                textoutput1=saveResult(number,ch);
-            }
-        }
-        tmpchar=ch;
-    }
-    if (checkSymbol(ch)==1){
-        textoutput1=funkcion1(ch);
-        ch=textoutput1[0];
-        number=tmpDouble;
-        textoutput1=saveResult(number,ch);
-        tmpDouble=0;
-        tmpchar='0';
-        staticResult=0;
-    }
-    if (checkSymbol(ch)==2){
-        if(tmpchar=='0'){
-            textoutput1=tmpDoubleToString(tmpDouble);
-        }
-        else{
-            if(flag==1){
-                textoutput1=saveResult(-1,'*');
-                flag=0;
-            }
-            else {
-                textoutput1=tmpDoubleToString(staticResult);
-            }
-        }
-        tmpchar=ch;
-    }
-    return textoutput1;
-}
-char *funkcion(char ch[],char *string){
-    string = (char*) realloc(string,1*sizeof(char));
-    strcat(string,ch);
-    return string;
+    return result;
 }
 char* funkcion1(char ch){
     static char string[1];
